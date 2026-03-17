@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build Me a Fintech Startup</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080c14;
+      --bg2: #0d1220;
+      --bg3: #111827;
+      --accent: #03a9f4;
+      --accent2: #0379bf;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --border: rgba(255,255,255,0.08);
+      --radius: 12px;
+      --space: 8px;
+      --max-w: 1200px;
+    }
+    body {
+      font-family: Inter, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 72px;
+      background: rgba(8,12,20,0.85);
+      backdrop-filter: blur(20px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 24px;
+    }
+    .nav-logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      margin-right: 24px;
+      text-decoration: none;
+    }
+    .nav-link:hover {
+      color: var(--text);
+    }
+    .nav-cta {
+      background: var(--accent);
+      color: var(--text);
+      border: none;
+      padding: 10px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.55);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    .hero-headline {
+      font-family: Playfair Display, serif;
+      font-size: 72px;
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--text);
+    }
+    .hero-subheadline {
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 560px;
+    }
+    .stats-bar {
+      background: var(--bg2);
+      padding: 120px 0;
+    }
+    .stats {
+      display: flex;
+      justify-content: space-between;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .stat-number {
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--accent);
+    }
+    .stat-label {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .feature-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      padding: 120px 0;
+    }
+    .feature-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+    }
+    .feature-icon {
+      width: 32px;
+      height: 32px;
+      fill: var(--accent);
+    }
+    .feature-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .feature-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      transition: 0.3s;
+    }
+    .photo-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding: 120px 0;
+    }
+    .photo {
+      width: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+      height: 200px;
+    }
+    .photo:hover {
+      transform: scale(1.03);
+    }
+    .testimonial-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      padding: 120px 0;
+    }
+    .testimonial-card {
+      background: var(--bg2);
+      padding: 32px;
+      border-radius: var(--radius);
+    }
+    .testimonial-quote {
+      font-family: Playfair Display, serif;
+      font-size: 80px;
+      font-weight: 700;
+      color: var(--accent);
+      opacity: 0.3;
+    }
+    .testimonial-author {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .testimonial-role {
+      font-size: 15px;
+      color: var(--muted);
+    }
+    .cta-section {
+      background: linear-gradient(to bottom, var(--accent), var(--accent2));
+      padding: 120px 0;
+      text-align: center;
+    }
+    .cta-headline {
+      font-family: Playfair Display, serif;
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--text);
+    }
+    .cta-subheadline {
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .cta-button {
+      background: var(--accent);
+      color: var(--text);
+      border: none;
+      padding: 10px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .footer {
+      background: var(--bg2);
+      padding: 120px 0;
+    }
+    .footer-logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .footer-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .footer-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      margin-right: 24px;
+      text-decoration: none;
+    }
+    .footer-link:hover {
+      color: var(--text);
+    }
+    .footer-social {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .footer-social-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      margin-right: 24px;
+      text-decoration: none;
+    }
+    .footer-social-link:hover {
+      color: var(--text);
+    }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+      text-align: center;
+    }
+    .footer-copyright {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .footer-legal {
+      font-size: 12px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-logo">Build Me a Fintech Startup</div>
+    <ul class="nav-links">
+      <li><a class="nav-link" href="#">Home</a></li>
+      <li><a class="nav-link" href="#">Features</a></li>
+      <li><a class="nav-link" href="#">Pricing</a></li>
+    </ul>
+    <button class="nav-cta">Get Started</button>
+  </nav>
+  <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="https://videos.pexels.com/video-files/7308103/7308103-hd_1280_720_24fps.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-headline">Build Me a Fintech Startup</h1>
+      <p class="hero-subheadline">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+      <button class="nav-cta">Get Started</button>
+    </div>
+  </section>
+  <section class="stats-bar">
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-number">10,000</div>
+        <div class="stat-label">Users</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">1,000,000</div>
+        <div class="stat-label">Transactions</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">100</div>
+        <div class="stat-label">Partners</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">5,000,000</div>
+        <div class="stat-label">Revenue</div>
+      </div>
+    </div>
+  </section>
+  <section class="feature-cards">
+    <div class="feature-card">
+      <svg class="feature-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+      <h2 class="feature-title">Feature 1</h2>
+      <p class="feature-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+    </div>
+    <div class="feature-card">
+      <svg class="feature-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      <h2 class="feature-title">Feature 2</h2>
+      <p class="feature-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+    </div>
+    <div class="feature-card">
+      <svg class="feature-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+      <h2 class="feature-title">Feature 3</h2>
+      <p class="feature-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+    </div>
+  </section>
+  <section class="photo-gallery">
+    <img class="photo" src="https://images.unsplash.com/photo-1642132652860-471b4228023e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTc4NDh8MHwxfHNlYXJjaHwxfHxidWlsZCUyMG1lJTIwYSUyMGZpbnRlY2glMjBzdGFydHVwJTIwd2Vic2l0ZXxlbnwwfDB8fHwxNzczNzQ2MzE0fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Photo 1" loading="lazy">
+    <img class="photo" src="https://images.unsplash.com/photo-1642132652866-6fa262d3161f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTc4NDh8MHwxfHNlYXJjaHwyfHxidWlsZCUyMG1lJTIwYSUyMGZpbnRlY2glMjBzdGFydHVwJTIwd2Vic2l0ZXxlbnwwfDB8fHwxNzczNzQ2MzE0fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Photo 2" loading="lazy">
+    <img class="photo" src="https://images.unsplash.com/photo-1649442746245-f51f4b76963f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTc4NDh8MHwxfHNlYXJjaHwzfHxidWlsZCUyMG1lJTIwYSUyMGZpbnRlY2glMjBzdGFydHVwJTIwd2Vic2l0ZXxlbnwwfDB8fHwxNzczNzQ2MzE0fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Photo 3" loading="lazy">
+  </section>
+  <section class="testimonial-cards">
+    <div class="testimonial-card">
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+      <div class="testimonial-author">John Doe</div>
+      <div class="testimonial-role">CEO, Example Company</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+      <div class="testimonial-author">Jane Doe</div>
+      <div class="testimonial-role">CTO, Example Company</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+      <div class="testimonial-author">Bob Smith</div>
+      <div class="testimonial-role">Founder, Example Company</div>
+    </div>
+  </section>
+  <section class="cta-section">
+    <h1 class="cta-headline">Get Started Today</h1>
+    <p class="cta-subheadline">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+    <button class="cta-button">Get Started</button>
+  </section>
+  <footer class="footer">
+    <div class="footer-logo">Build Me a Fintech Startup</div>
+    <ul class="footer-links">
+      <li><a class="footer-link" href="#">Home</a></li>
+      <li><a class="footer-link" href="#">Features</a></li>
+      <li><a class="footer-link" href="#">Pricing</a></li>
+    </ul>
+    <ul class="footer-social">
+      <li><a class="footer-social-link" href="#">Twitter</a></li>
+      <li><a class="footer-social-link" href="#">Facebook</a></li>
+      <li><a class="footer-social-link" href="#">LinkedIn</a></li>
+    </ul>
+    <div class="footer-bottom">
+      <div class="footer-copyright">2023 Build Me a Fintech Startup</div>
+      <div class="footer-legal">Terms of Service | Privacy Policy</div>
+    </div>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script>
+    gsap.from(".hero-content", {y: 60, opacity: 0, duration: 1, stagger: 0.2});
+    ScrollTrigger.create({
+      trigger: ".stats-bar",
+      start: "top 40%",
+      end: "bottom 60%",
+      toggleClass: "active",
+      markers: false
+    });
+    gsap.to(".feature-card", {
+      y: -4,
+      borderColor: "#03a9f4",
+      duration: 0.3,
+      ease: "power1.inOut"
+    });
+    gsap.fromTo(".stat-number", {
+      y: 0,
+      opacity: 0
+    }, {
+      y: 0,
+      opacity
